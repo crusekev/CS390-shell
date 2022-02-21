@@ -14,7 +14,8 @@ int main()
 
     while(1)
     {
-        fgets(input, 1024, stdin);
+        fgets(input, 1024, stdin); /* Get user input */
+        /* Tokenize user input */
         p = strtok(input, " \t");
         for(i = 0; p != 0; ++i)
         {
@@ -27,6 +28,7 @@ int main()
         my_argv[i++] = 0;
         my_argc = i;
 
+        /* Checking input for specified commands */
         int echo = strncmp(my_argv[0], "echo", 4);
         int ls = strncmp(my_argv[0], "ls", 2);
         int promptChar = strncmp(my_argv[0], "PS1", 3);
@@ -36,6 +38,7 @@ int main()
         
         if(echo == 0)
         {
+            /* Printing the echo input causes a seg fault */
             for(j = 0; *my_argv != "\n"; ++j)
             {
                 printf("%s ", my_argv[j + 1]);
